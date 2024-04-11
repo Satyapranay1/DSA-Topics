@@ -1,0 +1,48 @@
+class MinStack {
+    Stack<Integer> ans;
+    int min;
+    public MinStack() {
+        ans = new Stack<>();
+        min = Integer.MAX_VALUE;
+    }
+    
+    public void push(int val) {
+        if (val <= min){
+            ans.push(min);
+            min = val;
+        }
+        ans.push(val);
+    }
+    
+    public void pop() {
+        if (ans.pop() == min){
+            min = ans.pop();
+        }
+    }
+    
+    public int top() {
+        return ans.peek();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+
+
+
+
+ /*In this program
+While pushing if the given value is less than or equal to minimum value we push the minimum val as second minimum because we have to be aware of second minimum if we have to pop the minimum value 
+While popping we check if the popped value is minimum value if it is we have to update to next minium value as it is behind the minimum value
+All are remains same*/
