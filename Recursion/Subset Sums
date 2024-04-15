@@ -1,0 +1,17 @@
+class Solution {
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int n) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        Recur(arr,0,ans,0);
+        return ans;
+    }
+    
+    public void Recur(ArrayList<Integer> arr,int index,ArrayList<Integer> ans,int val){
+        if (index == arr.size()){
+            ans.add(val);
+            return;
+        }
+        
+        Recur(arr,index + 1,ans,val + arr.get(index));
+        Recur(arr,index + 1,ans,val);
+    }
+}
